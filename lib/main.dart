@@ -1,3 +1,5 @@
+import 'package:election_exit_poll_620710654/CandidateResult.dart';
+import 'package:election_exit_poll_620710654/exitPoll.dart';
 import 'package:election_exit_poll_620710654/pages/food/food_details_page.dart';
 import 'package:election_exit_poll_620710654/pages/home/home_page.dart';
 import 'package:election_exit_poll_620710654/pages/login/login_page.dart';
@@ -32,15 +34,16 @@ class MyApp extends StatelessWidget {
         ),
       ),
       //home: font(),
-      //home: GamePage(),
+      //home: Poll(),
 
       routes: {
         LoginPage.routeName: (context) => const LoginPage(),
         HomePage.routeName: (context) => const HomePage(),
         FoodDetailsPage.routeName: (context) => const FoodDetailsPage(),
-        //Hw14.routeName: (context) => const Hw14(),
+        Poll.routeName: (context) => const Poll(),
+        Result.routeName: (context) => const Result(),
       },
-      initialRoute: LoginPage.routeName,
+      initialRoute: Poll.routeName,
     );
   }
 }

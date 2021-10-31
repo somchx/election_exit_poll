@@ -22,29 +22,31 @@ class _FoodListPageState extends State<FoodListPage> {
     return Container(
       child: FutureBuilder<List<FoodItem>>(
         future: _futureFoodlist,
-        builder: (context,snapshot){
-          if(snapshot.connectionState != ConnectionState.done){
+        builder: (context, snapshot) {
+          if (snapshot.connectionState != ConnectionState.done) {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
-          if(snapshot.hasError){
+          if (snapshot.hasError) {
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('ผิดพลาด : ${snapshot.error}'),
-                  ElevatedButton(onPressed: (){
-                    setState(() {
-                      _futureFoodlist = _loadFoods();
-                    });
-                  }, child: Text('try again'))
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _futureFoodlist = _loadFoods();
+                        });
+                      },
+                      child: Text('try again'))
                 ],
               ),
             );
           }
-          if(snapshot.hasData){
+          if (snapshot.hasData) {
             return ListView.builder(
               padding: EdgeInsets.all(8.0),
               itemCount: snapshot.data!.length,
@@ -101,7 +103,7 @@ class _FoodListPageState extends State<FoodListPage> {
     );
   }
 
-  Future <List<FoodItem>> _loadFoods() async {
+  Future<List<FoodItem>> _loadFoods() async {
     List list = await Api().fetch('foods');
     var foodList = list.map((item) => FoodItem.fromJson(item)).toList();
     return foodList;

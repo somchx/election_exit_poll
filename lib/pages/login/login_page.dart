@@ -164,7 +164,6 @@ class _LoginPageState extends State<LoginPage> {
 
     if (_input.length == PIN_LENGTH) {
       var isLogin = await _login(_input);
-
       if (isLogin == null) return;
 
       if (isLogin) {
