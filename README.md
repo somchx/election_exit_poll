@@ -1,4 +1,4 @@
-# election_exit_poll_620710654
+# election_exit_poll
 
 A new Flutter project.
 
